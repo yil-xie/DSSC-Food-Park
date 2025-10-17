@@ -1,0 +1,1588 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - DSSC Food Park</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* ===== MODERN FADE-IN ANIMATIONS ===== */
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeSlideRight {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeSlideLeft {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Sidebar animation */
+    .sidebar {
+      opacity: 0;
+      animation: fadeSlideRight 0.8s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    /* Main content container */
+    .main {
+      opacity: 0;
+      animation: fadeSlideLeft 0.8s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    /* Navbar */
+    .main-navbar {
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    /* Highlight cards */
+    .highlight-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s ease forwards;
+    }
+
+    /* Animate each card with slight delay */
+    .highlight-card:nth-child(1) { animation-delay: 0.8s; }
+    .highlight-card:nth-child(2) { animation-delay: 1s; }
+    .highlight-card:nth-child(3) { animation-delay: 1.2s; }
+    .highlight-card:nth-child(4) { animation-delay: 1.4s; }
+
+    /* Detail cards fade up staggered */
+    .detail-card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideUp 0.7s ease forwards;
+    }
+    .detail-card:nth-child(1) { animation-delay: 0.8s; }
+    .detail-card:nth-child(2) { animation-delay: 1s; }
+    .detail-card:nth-child(3) { animation-delay: 1.2s; }
+    .detail-card:nth-child(4) { animation-delay: 1.4s; }
+    .detail-card:nth-child(5) { animation-delay: 1.6s; }
+    .detail-card:nth-child(6) { animation-delay: 1.8s; }
+    .detail-card:nth-child(7) { animation-delay: 2s; }
+    .detail-card:nth-child(8) { animation-delay: 2.2s; }
+  </style>
+</head>
+<body>
+    <style>
+      /* === GOOGLE-STYLE DARK MODE (ALL WHITE TEXT VERSION) === */
+body.dark-mode {
+  --bgColor: #202124;        /* dark background */
+  --surfaceColor: #2d2f31;   /* slightly lighter gray */
+  --textColor: #ffffff;      /* white text */
+  --primaryColor: #ffffff;   /* accents become white */
+  --secondaryColor: #484848; /* borders / hover */
+}
+
+/* Page background */
+body.dark-mode {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+/* Containers / cards */
+body.dark-mode .main,
+body.dark-mode .main-content,
+body.dark-mode .container {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  box-shadow: none;
+}
+
+/* Headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p {
+  color: var(--textColor);
+}
+
+/* Buttons */
+body.dark-mode button {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid var(--secondaryColor);
+  transition: 0.3s;
+}
+body.dark-mode button:hover {
+  background-color: var(--primaryColor);
+  color: #000;
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+}
+body.dark-mode .sidebar a {
+  color: var(--textColor);
+}
+body.dark-mode .sidebar a.active {
+  background-color: var(--secondaryColor);
+}
+/* === DARK MODE: RECOMMENDATIONS SECTION === */
+body.dark-mode .main-highlight {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  box-shadow: none;
+}
+
+body.dark-mode .main-highlight .main-header h2 {
+  color: var(--textColor);
+}
+
+body.dark-mode .main-arrow ion-icon {
+  color: var(--textColor);
+}
+
+body.dark-mode .highlight-card {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+  border: 1px solid var(--secondaryColor);
+  box-shadow: none;
+  transition: 0.3s;
+}
+
+body.dark-mode .highlight-card:hover {
+  background-color: var(--secondaryColor);
+  transform: scale(1.02);
+}
+
+body.dark-mode .highlight-desc h4,
+body.dark-mode .highlight-desc p {
+  color: var(--textColor);
+}
+
+body.dark-mode .highlight-img {
+  border-bottom: 1px solid var(--secondaryColor);
+  filter: brightness(0.9);
+}
+/* === DARK MODE: RECOMMENDATIONS (MAIN HIGHLIGHT) === */
+body.dark-mode .main-highlight {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: none;
+}
+
+body.dark-mode .main-highlight .main-title {
+  color: var(--textColor);
+  border-left-color: var(--primaryColor);
+}
+
+body.dark-mode .main-highlight .main-arrow ion-icon {
+  color: var(--textColor);
+}
+
+body.dark-mode .highlight-card {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+  border: 1px solid var(--secondaryColor);
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+body.dark-mode .highlight-card:hover {
+  background-color: var(--secondaryColor);
+  transform: scale(1.02);
+}
+
+body.dark-mode .highlight-desc h4,
+body.dark-mode .highlight-desc p {
+  color: var(--textColor);
+}
+
+body.dark-mode .highlight-img {
+  border-bottom: 1px solid var(--secondaryColor);
+  filter: brightness(0.9);
+}
+
+/* === DARK MODE: MENU CATEGORY (MAIN FILTER) === */
+body.dark-mode .main-filter {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+body.dark-mode .main-filter .main-title {
+  color: var(--textColor);
+  border-left-color: var(--primaryColor);
+}
+
+body.dark-mode .filter-card {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+  border: 1px solid var(--secondaryColor);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+body.dark-mode .filter-card:hover {
+  background-color: var(--secondaryColor);
+}
+
+body.dark-mode .filter-card p {
+  color: var(--textColor);
+}
+
+body.dark-mode .filter-icon ion-icon {
+  color: var(--textColor);
+}
+
+/* === DARK MODE: CHOOSE ORDER (DETAIL SECTION) === */
+body.dark-mode .main-detail {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: none;
+}
+
+body.dark-mode .main-detail .main-title {
+  color: var(--textColor);
+  border-left-color: var(--primaryColor);
+}
+
+body.dark-mode .detail-card {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+  border: 1px solid var(--secondaryColor);
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+body.dark-mode .detail-card:hover {
+  background-color: var(--secondaryColor);
+  transform: scale(1.02);
+}
+
+body.dark-mode .detail-desc h4,
+body.dark-mode .detail-desc p {
+  color: var(--textColor);
+}
+
+body.dark-mode .detail-favorites {
+  color: var(--textColor);
+}
+
+body.dark-mode .add-to-cart-btn {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid var(--secondaryColor);
+  transition: 0.3s;
+}
+
+body.dark-mode .add-to-cart-btn:hover {
+  background-color: var(--primaryColor);
+  color: #000;
+}
+/* === DARK MODE: MAIN MENUS / ORDER SECTION === */
+body.dark-mode .main-menus {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  box-shadow: none;
+}
+
+/* === Title and Section Headers === */
+body.dark-mode .main-title {
+  color: var(--textColor);
+  border-left: 4px solid var(--primaryColor);
+}
+
+/* === Filter Section === */
+body.dark-mode .main-filter {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+}
+
+body.dark-mode .filter-wrapper {
+  background-color: var(--bgColor);
+  border: 1px solid var(--secondaryColor);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+body.dark-mode .filter-card {
+  background-color: var(--surfaceColor);
+  border: 1px solid var(--secondaryColor);
+  color: var(--textColor);
+  transition: 0.3s;
+}
+
+body.dark-mode .filter-card:hover {
+  background-color: var(--secondaryColor);
+  color: var(--textColor);
+  transform: scale(1.05);
+}
+
+body.dark-mode .filter-icon ion-icon {
+  color: var(--textColor);
+}
+
+/* === Divider === */
+body.dark-mode .divider {
+  border: 1px solid var(--secondaryColor);
+  opacity: 0.6;
+}
+
+/* === Arrows === */
+body.dark-mode .main-arrow ion-icon {
+  color: var(--textColor);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+body.dark-mode .main-arrow ion-icon:hover {
+  color: var(--primaryColor);
+  transform: scale(1.1);
+}
+
+    </style>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h1 class="logo">DSSC Food Park</h1>
+        <div class="sidebar-menus">
+            <a href="#"><ion-icon name="home-outline"></ion-icon> Home</a>
+            <a href="shops.html"><ion-icon name="storefront-outline"></ion-icon> Shops</a>
+            <a href="orders.html"><ion-icon name="receipt-outline"></ion-icon> Order</a>
+            <a href="wallet.html"><ion-icon name="wallet-outline"></ion-icon> Wallet</a>
+            <a href="notification.html"><ion-icon name="notifications-outline"></ion-icon> Notifications</a>
+            <a href="contact-us.html"><ion-icon name="chatbubbles-outline"></ion-icon> Contact Us</a>
+            <a href="settings.html"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+        </div>
+        <div class="sidebar-logout">
+            <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon> Logout</a>
+        </div>
+    </div>
+
+    
+    <!-- Main Content -->
+    <div class="main">
+        <div class="main-navbar">
+            <ion-icon class="menus-toggle" name="menu-outline"></ion-icon>
+            <div class="search">
+  <input type="text" id="searchInput" placeholder="What you want to eat?" onkeyup="searchItem()">
+  <button class="search-btn" onclick="searchItem()">Search</button>
+</div>
+
+            <div class="profile">
+                <a class="cart" href="#" id="cart-icon" onclick="toggleCartPopup()">
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+                <a class="user" href="#"><ion-icon name="person-outline"></ion-icon></a>
+            </div>
+        </div>
+
+        
+
+        <!-- Shopping Cart Section -->
+<div id="cart-popup" class="cart-popup" style="position:fixed; top:120px; right:50px; z-index:5000; cursor:move;">
+  <h4 id="cart-header" style="margin:0; padding:10px; background:#0e6253; color:white; cursor:move; border-radius:8px 8px 0 0;">
+    <ion-icon name="cart-outline"></ion-icon>Food Cart
+  </h4>
+
+  <table id="cart-items">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price(₱)</th>
+        <th>Total(₱)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <p>Total(₱) <span id="cart-total">0.00</span></p>
+
+  <div style="margin-top: 10px; text-align: center;">
+    <label for="cashInput" style="margin-right: 8px; font-weight: bold; color: #222;">Enter Cash (₱) :</label>
+    <input type="number" id="cashInput" placeholder="0.00" min="0"
+      style="padding:8px 12px; width:150px; border:2px solid #0e6253; border-radius:8px; text-align:right; font-size:14px; font-weight:bold; color:#0e6253; background:#f9f9f9; outline:none;">
+  </div>
+
+  <div class="checkout-container">
+    <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>Checkout</button>
+  </div>
+
+  <a class="cart-close" onclick="closeCart()">
+    <ion-icon name="close-circle-outline"></ion-icon>
+  </a>
+</div>
+
+<script>
+  const cashInput = document.getElementById("cashInput");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  const cartTotalElement = document.getElementById("cart-total");
+
+  // Function to validate cash input
+  function validateCash() {
+    const totalAmount = parseFloat(cartTotalElement.textContent) || 0;
+    const enteredCash = parseFloat(cashInput.value);
+
+    if (!isNaN(enteredCash) && enteredCash >= totalAmount && totalAmount > 0) {
+      checkoutBtn.disabled = false; // Enable button
+    } else {
+      checkoutBtn.disabled = true; // Disable button
+    }
+  }
+
+  // Check whenever the user types in the cash input
+  cashInput.addEventListener("input", validateCash);
+</script>
+
+<style>
+  /* Disabled button style */
+  #checkoutBtn:disabled {
+    background-color: grey !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+</style>
+
+
+        <!-- Main Highlights -->
+        <div class="main-highlight">
+            <div class="main-header">
+                <h2 class="main-title">Recommendations</h2>
+                <div class="main-arrow">
+                    <ion-icon class="back" name="chevron-back-circle-outline"></ion-icon>
+                    <ion-icon class="next" name="chevron-forward-circle-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="highlight-wrapper">
+                <div class="highlight-card">
+                    <img class="highlight-img" src="images/takoyaki.png">
+                    <div class="highlight-desc">
+                        <h4>Fresh Takoyaki</h4>
+                        <p>5pcs for ₱25.00</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="images/Fries.jpg">
+                    <div class="highlight-desc">
+                        <h4>French Fries</h4>
+                        <p>₱20.00</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="images/cheesestick.jpg">
+                    <div class="highlight-desc">
+                        <h4>Cheese Sticks</h4>
+                        <p>₱20.00</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="images/kwek22.jpg">
+                    <div class="highlight-desc">
+                        <h4>Kwek Kwek</h4>
+                        <p>₱20.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <!-- Main Menus / Order -->
+        <div class="main-menus">
+            <div class="main-filter">
+                <div>
+                    <h2 class="main-title">Menu Category</h2>
+                    <div class="main-arrow">
+                        <ion-icon class="back-menus" name="chevron-back-circle-outline"></ion-icon>
+                        <ion-icon class="next-menus" name="chevron-forward-circle-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="restaurant-outline"></ion-icon>
+                        </div>
+                        <p>All Menus</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="fast-food-outline"></ion-icon>
+                        </div>
+                        <p>Street Foods</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="water-outline"></ion-icon>
+                        </div>
+                        <p>Drinks</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="cafe-outline"></ion-icon>
+                        </div>
+                        <p>Coffee</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="fish-outline"></ion-icon>
+                        </div>
+                        <p>Seafoods</p>
+                    </div>
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="nutrition-outline"></ion-icon>
+                        </div>
+                        <p>Healthy</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- List of food menu -->
+            <div class="main-detail">
+                <h2 class="main-title">Choose Order</h2>
+                <div class="detail-wrapper">
+                  <div class="detail-card">
+                        <img class="detail-img" src="images/fishball.jpg">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Fishball</h4>
+                            <p class="price">₱1.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Fishball', 1.00, 'images/fishball.jpg')">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/kikiam.webp">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Kikiam</h4>
+                            <p class="price">2ps for ₱5</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Kikiam', 5.00, 'images/kikiam.webp')">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/siomai.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                            <h4>Siomai</h4>
+                            <p class="price">₱5.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Siomai', 5.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/takoyaki.png">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Takoyaki</h4>
+                            <p class="price">₱5.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Takoyaki', 5.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/isaw.jpg">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Isaw</h4>
+                            <p class="price">₱5.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Isaw', 5.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/Unod.jpeg">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Chicken</h4>
+                            <p class="price">₱10.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Chicken', 10.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/champorado.webp">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                            <h4>Champorado</h4>
+                            <p class="price">₱20.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Champorado', 20.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/cheesestick.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                            <h4>Cheese Stick</h4>
+                            <p class="price">₱20.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Cheese Stick', 20.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/Dynamite.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                            <h4>Dynamite</h4>
+                            <p class="price">₱20.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Dynamite', 20.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/kwek22.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                            <h4>Kwek kwek</h4>
+                            <p class="price">₱20.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Kwek kwek', 20.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/chickenskin.jpg">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Chicken Skin</h4>
+                            <p class="price">₱25.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Chicken Skin', 25.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/Fries.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                            <h4>French Fries</h4>
+                            <p class="price">₱25.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Fries', 25.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/burger.jpg">
+                        <div class="detail-desc">
+                            <div class="detail-name">
+                            <h4>Burger</h4>
+                            <p class="price">₱30.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Burger', 30.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                     <div class="detail-card">
+                        <img class="detail-img" src="images/musubi.jpg">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Musubi</h4>
+                            <p class="price">₱35.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Musubi', 35.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/porksteak.jpg">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Beef Steak</h4>
+                            <p class="price">₱40.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Beef Steak', 40.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                    <div class="detail-card">
+                        <img class="detail-img" src="images/sisig.jpg">
+                        <div class="detail-desc">   
+                            <div class="detail-name">
+                            <h4>Sisig</h4>
+                            <p class="price">₱40.00</p>
+                            <button class="add-to-cart-btn" onclick="openAddons('Sisig', 40.00)">Add to Cart</button>
+                        </div>
+                        <ion-icon class="detail-favorites" name="bookmark-outline"></ion-icon>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+      .add-to-cart-btn {
+    width: 100px;
+    height: 30px;
+    margin: 10px 0 10px 5px;
+    background-color: var(--primaryColor);
+    border: none;
+    color: var(--whiteColor);
+    border-radius: 8px;
+    padding: 3%;
+    cursor: pointer;
+    transition: background-color 0.25s ,color 0.25s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--secondaryColor);
+    color: var(--blackColor);
+}
+    </style>
+
+   <!-- Checkout Popup -->
+<div id="checkout-popup" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:5000;">
+  <div style="background:#fff; width:400px; max-height:90vh; overflow-y:auto; 
+              border-radius:12px; padding:20px; box-shadow:0 6px 16px rgba(0,0,0,0.2); position:relative;">
+              
+
+    <!-- Close button -->
+    <span onclick="closeCheckout()" 
+          style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:22px; color:#666;">&times;</span>
+    
+    <!-- Header -->
+    <h2 style="text-align:center; color:#0e6253; margin-bottom:10px;">Checkout</h2>
+    <p style="text-align:center; font-size:13px; color:#555; line-height:1.4;">
+      <strong>DSSC FOOD PARK</strong><br>
+      <span style="color:#0e6253; font-weight:600;">Info:</span> (+63) 948 539 8457<br>
+      Matti, Digos City, Davao del Sur, Philippines
+    </p>
+    <hr style="border:1px solid #eee; margin:12px 0;">
+    
+    <!-- Order Summary -->
+    <h3 style="font-size:16px; color:#0e6253; margin-bottom:6px;">Order Summary</h3>
+    <table id="checkout-items" style="width:100%; border-collapse:collapse; font-size:14px; margin-bottom:10px;">
+      <thead>
+        <tr style="background:#f5f5f5; color:#222; text-align:left;">
+          <th style="padding:6px;">Item</th>
+          <th style="padding:6px; text-align:center;">Qty</th>
+          <th style="padding:6px; text-align:center;">Price</th>
+          <th style="padding:6px; text-align:center;">Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p style="text-align:right; font-weight:bold; font-size:15px;">Total: ₱<span id="checkout-total">0.00</span></p>
+    
+    <hr style="border:1px solid #eee; margin:12px 0;">
+    
+    <!-- Shipping Option -->
+    <h3 style="font-size:15px; color:#0e6253; margin-bottom:6px;">Shipping Option</h3>
+    <label style="display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:14px; cursor:pointer;">
+      <input type="radio" name="shipping" checked style="transform:scale(1.2); accent-color:#0e6253;">
+      🛒 Delivery 10–20 minutes ₱10 
+    </label>
+    <label style="display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:14px; cursor:pointer;">
+      <input type="radio" name="shipping" style="transform:scale(1.2); accent-color:#0e6253;">
+      🏬 Pickup at the Shop
+    </label>
+    
+    <hr style="border:1px solid #eee; margin:12px 0;">
+    
+    <!-- Payment Method -->
+    <h3 style="font-size:15px; color:#0e6253; margin-bottom:6px;">Payment Method</h3>
+    <label style="display:block; margin-bottom:5px; font-size:14px;">
+      <input type="radio" name="payment" checked style="margin-right:6px; transform:scale(1.2); accent-color:#0e6253;">💵 Cash on Delivery
+    </label>
+    <label style="display:block; margin-bottom:5px; font-size:14px;">
+      <input type="radio" name="payment" style="margin-right:6px; transform:scale(1.2); accent-color:#0e6253;">💳 GCash
+    </label>
+    <label style="display:block; margin-bottom:10px; font-size:14px;">
+      <input type="radio" name="payment" style="margin-right:6px; transform:scale(1.2); accent-color:#0e6253;">💶 PayPal
+    </label>
+    
+    <div style="text-align:center; margin-top:15px;">
+  <style>
+.btn-receipt {
+  background: #ffc107;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #222;
+  width: 100%;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* space between icon and text */
+}
+
+.btn-receipt:hover {
+  background: #ffb300; /* slightly darker yellow */
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+<button class="btn-receipt" onclick="showReceipt()">
+  <ion-icon name="receipt-outline"></ion-icon>
+  Show Receipt
+</button>
+
+</div>
+
+    <!-- Place Order Button -->
+    <style>
+.btn-order {
+  background: #0e6253;
+  border: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-order:hover {
+  background: #0b5145; /* slightly darker green */
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+<button class="btn-order" onclick="placeOrder()">
+  Place Order
+</button>
+
+<script>
+function placeOrder() {
+  const orderRows = document.querySelectorAll('.checkout-summary tr'); 
+  const payment = document.querySelector('input[name="payment"]:checked')?.nextSibling.textContent.trim() || 'Cash on Delivery';
+  const shipping = document.querySelector('input[name="shipping"]:checked')?.nextSibling.textContent.trim() || 'Pickup';
+  
+  const orderItems = [];
+  orderRows.forEach(row => {
+    const cols = row.querySelectorAll('td');
+    if (cols.length === 4) { 
+      const item = cols[0].textContent.trim();
+      const qty = parseInt(cols[1].textContent.trim());
+      const price = parseFloat(cols[2].textContent.replace(/[₱]/g, '')) || 0;
+      const total = parseFloat(cols[3].textContent.replace(/[₱]/g, '')) || 0;
+      orderItems.push({ item, qty, price, total });
+    }
+  });
+
+  const fullOrder = {
+    id: Date.now(),
+    items: orderItems,
+    payment,
+    shipping,
+    time: new Date().toLocaleString()
+  };
+
+  const saved = JSON.parse(localStorage.getItem('orders')) || [];
+  saved.push(fullOrder);
+  localStorage.setItem('orders', JSON.stringify(saved));
+
+  alert('✅ Order placed successfully!');
+  window.location.href = 'orders.html';
+}
+</script>
+
+
+  </div>
+</div>
+
+    <!-- Receipt Popup -->
+<div id="receipt-popup" class="receipt-popup" style="display: none;">
+
+<!-- Draggable Header -->
+  <div id="receipt-header" 
+       style="background:#0e6253; color:#fff; padding:10px; cursor:move; border-radius:8px 8px 0 0;">
+    <h2 style="margin:0; font-size:18px;">DSSC Food Park</h2>
+  </div>
+
+    <p>Matti, Digos City</p>
+    <p>Davao del Sur, Philippines</p>
+    <p>+63 948 539 8457</p>
+
+    <hr>
+
+    <h3>Receipt</h3>
+    <table id="receipt-table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th> <!-- 👈 Added -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <hr>
+    <p><strong>Receipt No:</strong> <span id="receipt-number"></span></p>
+    <p>Total: ₱<span id="total-amount">0.00</span></p>
+    <p>Cash: ₱<span id="cash-paid">0.00</span></p>
+    <p>Balance: ₱<span id="change">0.00</span></p>
+
+    <hr>
+
+    <p>Thank you for your business!</p>
+    <p>Code by: Group 4</p>
+
+    <!-- Show Checkout Again Button -->
+<style>
+.btn-checkout {
+  background: #0e6253;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 10px;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* space between icon and text */
+}
+
+.btn-checkout:hover {
+  background: #0b5145; /* slightly darker green */
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+<button class="btn-checkout" onclick="showCheckoutAgain()">
+  <ion-icon name="receipt-outline"></ion-icon>
+  Show Checkout Again
+</button>
+
+
+    <button onclick="closeReceipt()">Close</button>
+</div>
+
+<!-- Add-ons Popup -->
+<div id="addons-popup" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:4000;">
+  <div style="background:#fff; width:360px; border-radius:12px; padding:20px; position:relative;">
+
+    <h2 style="margin:0 0 15px; font-size:18px; font-weight:bold; color:#0e6253; text-align:center;">
+      Select Add-ons
+      <span onclick="document.getElementById('addons-popup').style.display='none'" 
+            style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:22px; color:#888;">&times;</span>
+    </h2>
+
+    <!-- Main Item -->
+<div id="main-item-container" 
+     style="display:flex; align-items:center; justify-content:space-between; 
+            margin-bottom:15px; padding-bottom:6px; border-bottom:1px solid #ddd;">
+  <div style="display:flex; align-items:center; gap:10px;">
+    <span id="main-item-name" style="font-size:15px; font-weight:bold;">Fishball</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:6px;">
+    <button onclick="changeQty('main-item', -1)" 
+            style="width:28px;height:28px;background:#0e6253;color:#fff;border:none;border-radius:4px;">−</button>
+    <input id="main-item-qty" type="number" value="1" min="1" 
+           style="width:40px;text-align:center;font-size:14px;border:1px solid #ccc;border-radius:4px;">
+    <button onclick="changeQty('main-item', 1)" 
+            style="width:28px;height:28px;background:#0e6253;color:#fff;border:none;border-radius:4px;">+</button>
+  </div>
+</div>
+
+
+    <!-- Add-ons Section -->
+<div style="margin-top:10px;">
+
+  <!-- Rice -->
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="images/Rice.webp" alt="Rice" style="width:45px; height:45px; border-radius:8px; object-fit:cover;">
+      <span style="font-size:15px;">Rice (+₱10)</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <button onclick="changeQty('rice', -1)" 
+              style="width:26px;height:26px;background:#0e6253;color:#fff;border:none;border-radius:4px;">−</button>
+      <input id="rice-qty" type="number" value="0" min="0" 
+             style="width:35px;text-align:center;font-size:13px;border:1px solid #ccc;border-radius:4px;">
+      <button onclick="changeQty('rice', 1)" 
+              style="width:26px;height:26px;background:#0e6253;color:#fff;border:none;border-radius:4px;">+</button>
+    </div>
+  </div>
+
+  <!-- Egg -->
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="images/Egg.jpg" alt="Egg" style="width:45px; height:45px; border-radius:8px; object-fit:cover;">
+      <span style="font-size:15px;">Egg (+₱10)</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <button onclick="changeQty('egg', -1)" 
+              style="width:26px;height:26px;background:#0e6253;color:#fff;border:none;border-radius:4px;">−</button>
+      <input id="egg-qty" type="number" value="0" min="0" 
+             style="width:35px;text-align:center;font-size:13px;border:1px solid #ccc;border-radius:4px;">
+      <button onclick="changeQty('egg', 1)" 
+              style="width:26px;height:26px;background:#0e6253;color:#fff;border:none;border-radius:4px;">+</button>
+    </div>
+  </div>
+
+  <!-- Drinks -->
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img id="drink-img" src="images/coke.jpg" alt="Drink" 
+           style="width:45px; height:45px; border-radius:8px; object-fit:cover;">
+      <span style="font-size:15px;">Drinks (+₱20)</span>
+    </div>
+
+    <!-- Drink Selector -->
+    <select id="drink-type" onchange="updateDrinkImage()" 
+            style="padding:5px 8px; border-radius:6px; border:1px solid #ccc; outline:none;">
+      <option value="coke">Coke</option>
+      <option value="sprite">Sprite</option>
+      <option value="royal">Royal</option>
+    </select>
+
+    <div style="display:flex; align-items:center; gap:6px;">
+      <button onclick="changeQty('drinks', -1)" 
+              style="width:26px;height:26px;background:#0e6253;color:#fff;border:none;border-radius:4px;">−</button>
+      <input id="drinks-qty" type="number" value="0" min="0" 
+             style="width:35px;text-align:center;font-size:13px;border:1px solid #ccc;border-radius:4px;">
+      <button onclick="changeQty('drinks', 1)" 
+              style="width:26px;height:26px;background:#0e6253;color:#fff;border:none;border-radius:4px;">+</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.btn-confirm {
+  background: #ffc107;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #222;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-confirm:hover {
+  background: #e0a800; /* slightly darker yellow */
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+<!-- Confirm Button -->
+<button class="btn-confirm" onclick="confirmAddons()">
+  Confirm
+</button>
+
+<!-- JS -->
+<script>
+function openAddons(name, price, imgPath) {
+  // Update main item info dynamically
+  document.getElementById("main-item-name").textContent = name;
+  document.getElementById("main-item-price").textContent = "₱" + price.toFixed(2);
+  document.getElementById("main-item-img").src = imgPath;
+
+  // Reset quantities
+  document.getElementById("main-item-qty").value = 1;
+  ["rice", "egg", "drinks"].forEach(id => document.getElementById(id + "-qty").value = 0);
+
+  // Reset drink selection and image
+  document.getElementById("drink-type").value = "coke";
+  updateDrinkImage();
+
+  // Show popup
+  document.getElementById("addons-popup").style.display = "block";
+}
+
+function changeQty(id, change) {
+  const input = document.getElementById(id + "-qty");
+  let value = parseInt(input.value) + change;
+  if (value < 0) value = 0;
+  input.value = value;
+}
+
+function updateDrinkImage() {
+  const drink = document.getElementById("drink-type").value;
+  const img = document.getElementById("drink-img");
+
+  if (drink === "sprite") img.src = "images/Sprite.webp";
+  else if (drink === "royal") img.src = "images/Royal.png";
+  else img.src = "images/coke.jpg"; // default
+}
+
+function confirmAddons() {
+  alert("Add-ons confirmed!");
+  document.getElementById("addons-popup").style.display = "none";
+}
+</script>
+
+
+      <!-- Scripts -->
+  <script>
+let cart = [];
+
+function addToCart(name, price) {
+  let item = cart.find(i => i.name === name);
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+  updateCart();
+}
+
+function updateCart() {
+  let tbody = document.querySelector("#cart-items tbody");
+  let total = 0, count = 0;
+  tbody.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    let itemTotal = item.qty * item.price;
+    total += itemTotal;
+    count += item.qty;
+
+    tbody.innerHTML += `
+      <tr>
+        <td>${item.name}</td>
+        <td>
+          <div class="quantity-control">
+            <button class="decrease" data-index="${index}">-</button>
+            <input type="number" class="item-count" value="${item.qty}" min="1" data-index="${index}">
+            <button class="increase" data-index="${index}">+</button>
+          </div>
+        </td>
+        <td>₱${item.price.toFixed(2)}</td>
+        <td>₱${itemTotal.toFixed(2)}</td>
+      </tr>`;
+  });
+
+  document.getElementById("cart-total").textContent = total.toFixed(2);
+  document.getElementById("cart-count").textContent = count;
+
+  // Add event listeners for increase/decrease buttons and manual input
+  document.querySelectorAll(".increase").forEach(btn => {
+    btn.addEventListener("click", () => {
+      let idx = btn.dataset.index;
+      cart[idx].qty++;
+      updateCart();
+    });
+  });
+
+  document.querySelectorAll(".decrease").forEach(btn => {
+    btn.addEventListener("click", () => {
+      let idx = btn.dataset.index;
+      if (cart[idx].qty > 1) {
+        cart[idx].qty--;
+      } else {
+        cart.splice(idx, 1); // remove item if qty = 0
+      }
+      updateCart();
+    });
+  });
+
+  document.querySelectorAll(".item-count").forEach(input => {
+    input.addEventListener("input", () => {
+      let idx = input.dataset.index;
+      let val = parseInt(input.value);
+      if (isNaN(val) || val < 1) val = 1;
+      cart[idx].qty = val;
+      updateCart();
+    });
+  });
+}
+
+// Checkout logic
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+   openCheckout(); // ✅ just open checkout, do not show receipt yet
+});
+
+function toggleCartPopup() {
+  document.getElementById("cart-popup").classList.toggle("active");
+}
+function closeCart() {
+  document.getElementById("cart-popup").classList.remove("active");
+}
+function closeReceipt() {
+  document.getElementById("receipt-popup").style.display = "none";
+}
+
+let pendingItem = null;
+
+// Open add-ons popup instead of adding directly
+function openAddons(itemName, itemPrice) {
+    pendingItem = { name: itemName, price: itemPrice };
+    
+    // Update popup title dynamically
+    document.getElementById("main-item-name").textContent = itemName;
+    
+    // Reset qtys
+    document.getElementById("main-item-qty").value = 1;
+    document.getElementById("rice-qty").value = 0;
+    document.getElementById("egg-qty").value = 0;
+    document.getElementById("drinks-qty").value = 0;
+
+    document.getElementById("addons-popup").style.display = "flex";
+}
+
+
+// Confirm and add item with add-ons
+function confirmAddons() {
+    const checkboxes = document.querySelectorAll("#addons-popup input[type=checkbox]:checked");
+    let finalPrice = pendingItem.price;
+    let addonsText = "";
+
+    checkboxes.forEach(cb => {
+        if (cb.value === "Rice") finalPrice += 10;
+        if (cb.value === "Egg") finalPrice += 10;
+        if (cb.value === "Drinks") finalPrice += 20;
+        addonsText += " + " + cb.value;
+    });
+
+    addToCart(pendingItem.name + addonsText, finalPrice);
+
+    // Reset and close popup
+    document.querySelectorAll("#addons-popup input[type=checkbox]").forEach(cb => cb.checked = false);
+    document.getElementById("addons-popup").style.display = "none";
+    pendingItem = null;
+}
+
+// Close popup if clicked outside content
+window.addEventListener("click", (e) => {
+    const popup = document.getElementById("addons-popup");
+    if (e.target === popup) {
+        popup.style.display = "none";
+    }
+});
+
+function changeQty(id, delta) {
+  const input = document.getElementById(id + "-qty"); // e.g., main-item-qty
+  if (!input) return; // safety check
+  let value = parseInt(input.value) || 0;
+  value += delta;
+  if (value < parseInt(input.min)) value = parseInt(input.min);
+  input.value = value;
+}
+
+// overwrite confirmAddons
+function confirmAddons() {
+    const mainQty = parseInt(document.getElementById("main-item-qty").value) || 1;
+    let totalPrice = pendingItem.price * mainQty;
+    let finalName = `${pendingItem.name} x${mainQty}`;
+
+    const riceQty = parseInt(document.getElementById("rice-qty").value) || 0;
+    const eggQty = parseInt(document.getElementById("egg-qty").value) || 0;
+    const drinksQty = parseInt(document.getElementById("drinks-qty").value) || 0;
+
+    if (riceQty > 0) {
+        totalPrice += riceQty * 10;
+        finalName += ` + Rice x${riceQty}`;
+    }
+    if (eggQty > 0) {
+        totalPrice += eggQty * 10;
+        finalName += ` + Egg x${eggQty}`;
+    }
+    if (drinksQty > 0) {
+        totalPrice += drinksQty * 20;
+        finalName += ` + Drinks x${drinksQty}`;
+    }
+
+    addToCart(finalName, totalPrice);
+
+    // reset values
+    document.getElementById("main-item-qty").value = 1;
+    document.getElementById("rice-qty").value = 0;
+    document.getElementById("egg-qty").value = 0;
+    document.getElementById("drinks-qty").value = 0;
+
+    document.getElementById("addons-popup").style.display = "none";
+    pendingItem = null;
+}
+
+function openCheckout() {
+      // close food cart first
+  closeCart();
+
+  // fill checkout table with cart items
+  let tbody = document.querySelector("#checkout-items tbody");
+  tbody.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    let rowTotal = item.qty * item.price;
+    total += rowTotal;
+    tbody.innerHTML += `
+      <tr>
+        <td>${item.name}</td>
+        <td align="center">${item.qty}</td>
+        <td align="center">₱${item.price.toFixed(2)}</td>
+        <td align="center">₱${rowTotal.toFixed(2)}</td>
+      </tr>`;
+  });
+
+  document.getElementById("checkout-total").textContent = total.toFixed(2);
+  document.getElementById("checkout-popup").style.display = "block";
+}
+
+function closeCheckout() {
+  document.getElementById("checkout-popup").style.display = "none";
+}
+
+function placeOrder() {
+  alert("✅ Order placed successfully!");
+  cart = []; // clear cart
+  updateCart();
+  closeCheckout();
+}
+
+function showReceipt() {
+  // Close checkout popup
+  closeCheckout();
+
+  // Build receipt
+  let tbody = document.querySelector("#receipt-table tbody");
+  tbody.innerHTML = "";
+
+  let grandTotal = 0;
+  cart.forEach(item => {
+    let rowTotal = item.qty * item.price;
+    grandTotal += rowTotal;
+    tbody.innerHTML += `
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.qty}</td>
+        <td>₱${item.price.toFixed(2)}</td>
+        <td>₱${rowTotal.toFixed(2)}</td>
+      </tr>`;
+  });
+
+  // Get entered cash
+  let cash = parseFloat(document.getElementById("cashInput").value) || 0;
+
+  // Generate receipt number: DD/MM-RND
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, "0");
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const randomPart = Math.floor(1000 + Math.random() * 9000); // 4-digit random
+  const receiptNumber = `${day}/${month}-${randomPart}`;
+
+  // Update receipt values
+  document.getElementById("receipt-number").textContent = receiptNumber;
+  document.getElementById("total-amount").textContent = grandTotal.toFixed(2);
+  document.getElementById("cash-paid").textContent = cash.toFixed(2);
+  document.getElementById("change").textContent = (cash - grandTotal).toFixed(2);
+
+  // Show receipt
+  document.getElementById("receipt-popup").style.display = "block";
+}
+
+function showCheckoutAgain() {
+  // Hide the receipt
+  document.getElementById("receipt-popup").style.display = "none";
+  // Show checkout popup again
+  document.getElementById("checkout-popup").style.display = "flex";
+}
+
+function closeReceipt() {
+  document.getElementById("receipt-popup").style.display = "none";
+}
+</script>
+
+
+
+<script>
+// Make both cart and receipt draggable
+dragElement(document.getElementById("cart-popup"), document.getElementById("cart-header"));
+dragElement(document.getElementById("receipt-popup"), document.getElementById("receipt-header"));
+
+function dragElement(elmnt, dragHandle) {
+  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+  dragHandle.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+<script>
+function searchItem() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let items = document.querySelectorAll(".detail-card");
+
+  items.forEach(item => {
+    let name = item.querySelector("h4").textContent.toLowerCase();
+    if (name.includes(input)) {
+      item.style.display = "block";  // show matching item
+    } else {
+      item.style.display = "none";   // hide non-matching item
+    }
+  });
+}
+
+function searchItem() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let cards = document.querySelectorAll(".detail-card");
+
+  cards.forEach(card => {
+    let foodName = card.querySelector("h4").textContent.toLowerCase();
+    let price = card.querySelector(".price").textContent.toLowerCase();
+
+    // Match food name or price
+    if (foodName.includes(input) || price.includes(input)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+</script>
+
+<script>
+function placeOrder() {
+  const tableBody = document.querySelector('#checkout-items tbody');
+  const rows = tableBody.querySelectorAll('tr');
+  const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+  // Get payment method
+  const paymentInput = document.querySelector('input[name="payment"]:checked');
+  let paymentMethod = "Unknown";
+  if (paymentInput) {
+    paymentMethod = paymentInput.nextElementSibling?.innerText?.trim() || paymentInput.parentNode.textContent.trim();
+  }
+
+  // ✅ Get shipping method
+  const shippingInput = document.querySelector('input[name="shipping"]:checked');
+  let shippingMethod = "Unknown";
+  if (shippingInput) {
+    shippingMethod = shippingInput.nextElementSibling?.innerText?.trim() || shippingInput.parentNode.textContent.trim();
+  }
+
+  // Get total
+  const totalAmount = document.getElementById('checkout-total').innerText.trim();
+
+  // Loop through checkout items
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    const item = cells[0]?.innerText.trim() || "";
+    const qty = cells[1]?.innerText.trim() || "";
+    const price = cells[2]?.innerText.trim() || "";
+    const total = cells[3]?.innerText.trim() || "";
+
+    if (item !== "") {
+      orders.push({
+        item,
+        qty,
+        price,
+        total,
+        paymentMethod,
+        shippingMethod, // ✅ include shipping option
+        grandTotal: totalAmount
+      });
+    }
+  });
+
+  // Save to localStorage
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+  // Optional: alert and redirect
+  alert("✅ Order placed successfully!");
+  window.location.href = "orders.html";
+}
+</script>
+
+<script>
+// === Auto Load Dark or Light Mode Based on Saved Setting ===
+document.addEventListener('DOMContentLoaded', () => {
+  const settings = JSON.parse(localStorage.getItem('userSettings')) || {};
+  const isDarkMode = settings.darkMode || false;
+  document.body.classList.toggle('dark-mode', isDarkMode);
+});
+</script>
+
+  <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- Adding Mobile View -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+    

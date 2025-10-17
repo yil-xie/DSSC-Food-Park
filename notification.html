@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications - DSSC Food Park</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+  /* --- LIGHT MODE (DEFAULT) --- */
+  body {
+    background: linear-gradient(135deg, #ffffff, #f4fdf6, #fffbea);
+    font-family: 'Times New Roman', sans-serif;
+    color: #222;
+    margin: 0;
+    padding: 0;
+  }
+
+  .notifications-container {
+    margin-left: 250px;
+    padding: 50px;
+    padding-right: 1010px;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #ffffff, #f9fff7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .notifications-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .notifications-header h2 {
+    font-size: 32px;
+    color: #2e7d32;
+    font-weight: 700;
+  }
+
+  .notifications-list {
+    background: #fff;
+    border-radius: 20px;
+    width: 85%;
+    max-width: 700px;
+    padding: 20px 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #c8e6c9;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .notification-item {
+    background: #f9fff7;
+    border-left: 6px solid #4caf50;
+    border-radius: 12px;
+    padding: 15px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s ease;
+  }
+
+  .notification-item:hover {
+    background: #fffbea;
+    transform: scale(1.02);
+  }
+
+  .notification-text {
+    flex: 1;
+    color: #333;
+    font-size: 15px;
+  }
+
+  .notification-time {
+    font-size: 12px;
+    color: #888;
+    margin-left: 10px;
+  }
+
+  .no-notifications {
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+    padding: 30px 0;
+  }
+
+  .notifications-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 15px;
+  }
+
+  .notif-btn {
+    background: linear-gradient(145deg, #fdd835, #fbc02d);
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .notif-btn:hover {
+    background: linear-gradient(145deg, #fbc02d, #fdd835);
+    transform: scale(1.05);
+  }
+
+  .notif-btn.green {
+    background: linear-gradient(145deg, #4caf50, #388e3c);
+    color: #fff;
+  }
+
+  .notif-btn.green:hover {
+    background: linear-gradient(145deg, #388e3c, #4caf50);
+  }
+
+  /* === GOOGLE-STYLE DARK MODE (ALL WHITE TEXT VERSION) === */
+  body.dark-mode {
+    --bgColor: #202124;        /* dark background */
+    --surfaceColor: #2d2f31;   /* slightly lighter gray */
+    --textColor: #ffffff;      /* pure white text everywhere */
+    --primaryColor: #ffffff;   /* accent gray */
+    --secondaryColor: #3c4043; /* border / hover gray */
+  }
+
+  /* === Page background === */
+  body.dark-mode {
+    background-color: var(--bgColor);
+    color: var(--textColor);
+  }
+
+  /* === Container === */
+  body.dark-mode .notifications-container {
+    background-color: var(--surfaceColor);
+    color: var(--textColor);
+    box-shadow: none;
+  }
+
+  /* === Header === */
+  body.dark-mode .notifications-header h2 {
+    color: var(--textColor);
+    border-left: 4px solid var(--primaryColor);
+    padding-left: 10px;
+  }
+
+  /* === Notifications list === */
+  body.dark-mode .notifications-list {
+    background-color: var(--surfaceColor);
+    border: 1px solid var(--secondaryColor);
+  }
+
+  /* === Notification items === */
+  body.dark-mode .notification-item {
+    background-color: var(--bgColor);
+    border-left: 6px solid var(--primaryColor);
+    color: var(--textColor);
+    border-bottom: 1px solid var(--secondaryColor);
+  }
+
+  body.dark-mode .notification-item:hover {
+    background-color: var(--secondaryColor);
+  }
+
+  /* === Texts and timestamps === */
+  body.dark-mode .notification-text,
+  body.dark-mode .notification-time {
+    color: var(--textColor);
+  }
+
+  /* === No notifications message === */
+  body.dark-mode .no-notifications {
+    color: var(--textColor);
+    opacity: 0.9;
+  }
+
+  /* === Buttons === */
+  body.dark-mode .notif-btn {
+    background-color: var(--primaryColor);
+    color: #ffffff;
+    border: none;
+  }
+
+  body.dark-mode .notif-btn:hover {
+    background-color: var(--secondaryColor);
+    color: var(--textColor);
+  }
+
+  /* === Sidebar === */
+  body.dark-mode .sidebar {
+    background-color: var(--surfaceColor);
+    color: var(--textColor);
+  }
+
+  body.dark-mode .sidebar a {
+    color: var(--textColor);
+  }
+
+  body.dark-mode .sidebar a.active {
+    background-color: var(--secondaryColor);
+  }
+
+  body.dark-mode .sidebar ion-icon {
+    color: var(--primaryColor);
+  }
+
+  /* === FINAL FIX FOR DARK MODE BACKGROUND === */
+
+/* 1️⃣ Override light gradient in dark mode */
+body.dark-mode .notifications-container {
+  background: var(--bgColor) !important;
+}
+
+/* 2️⃣ Ensure page background is fully dark */
+body.dark-mode {
+  background-color: var(--bgColor) !important;
+}
+
+/* 3️⃣ Make each notification pop slightly */
+body.dark-mode .notification-item {
+  background-color: #2f3133 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-left: 5px solid #5f6368;
+}
+</style>
+
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1 class="logo">DSSC Food Park</h1>
+    <div class="sidebar-menus">
+      <a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a>
+      <a href="shops.html"><ion-icon name="storefront-outline"></ion-icon> Shops</a>
+      <a href="orders.html"><ion-icon name="receipt-outline"></ion-icon> Orders</a>
+      <a href="wallet.html"><ion-icon name="wallet-outline"></ion-icon> Wallet</a>
+      <a href="notification.html" class="active"><ion-icon name="notifications-outline"></ion-icon> Notifications</a>
+      <a href="contact-us.html"><ion-icon name="chatbubbles-outline"></ion-icon> Contact Us</a>
+      <a href="settings.html"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+    </div>
+    <div class="sidebar-logout">
+      <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon> Logout</a>
+    </div>
+  </div>
+
+  <!-- Notifications Section -->
+  <div class="notifications-container">
+    <div class="notifications-header">
+      <h2>Notifications</h2>
+    </div>
+
+    <div class="notifications-list" id="notificationsList">
+      <div class="no-notifications">No notifications yet.</div>
+    </div>
+
+    <div class="notifications-actions">
+      <button class="notif-btn green" onclick="addNotification()">Add Sample</button>
+      <button class="notif-btn" onclick="clearNotifications()">Clear All</button>
+    </div>
+  </div>
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- Notifications Logic -->
+  <script>
+    let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+
+    function displayNotifications() {
+      const container = document.getElementById('notificationsList');
+      container.innerHTML = '';
+
+      if (notifications.length === 0) {
+        container.innerHTML = '<div class="no-notifications">No notifications yet.</div>';
+        return;
+      }
+
+      notifications.forEach((notif) => {
+        const item = document.createElement('div');
+        item.className = 'notification-item';
+        item.innerHTML = `
+          <div class="notification-text">
+            ${notif.text}
+            <div class="notification-time">${notif.time}</div>
+          </div>
+          <ion-icon name="checkmark-done-outline" style="color:#4caf50;font-size:20px;"></ion-icon>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function addNotification() {
+      const messages = [
+        "Your order is being prepared 🍳",
+        "Your order has been delivered 🛵",
+        "₱50 added to your wallet 💰",
+        "New promo: Free delivery on weekends 🎉"
+      ];
+      const text = messages[Math.floor(Math.random() * messages.length)];
+      const notif = {
+        text,
+        time: new Date().toLocaleString()
+      };
+      notifications.unshift(notif);
+      saveNotifications();
+    }
+
+    function clearNotifications() {
+      if (confirm("Are you sure you want to clear all notifications?")) {
+        notifications = [];
+        saveNotifications();
+      }
+    }
+
+    function saveNotifications() {
+      localStorage.setItem('notifications', JSON.stringify(notifications));
+      displayNotifications();
+    }
+
+    document.addEventListener('DOMContentLoaded', displayNotifications);
+  </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const settings = JSON.parse(localStorage.getItem('userSettings'));
+  if (settings && settings.darkMode) {
+    document.body.classList.add('dark-mode');
+  }
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

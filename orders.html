@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders - DSSC Food Park</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1 class="logo">DSSC Food Park</h1>
+    <div class="sidebar-menus">
+      <a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a>
+      <a href="shops.html"><ion-icon name="storefront-outline"></ion-icon> Shops</a>
+      <a href="orders.html" class="active"><ion-icon name="receipt-outline"></ion-icon> Orders</a>
+      <a href="wallet.html"><ion-icon name="wallet-outline"></ion-icon> Wallet</a>
+      <a href="notification.html"><ion-icon name="notifications-outline"></ion-icon> Notifications</a>
+      <a href="contact-us.html"><ion-icon name="chatbubbles-outline"></ion-icon> Contact Us</a>
+      <a href="settings.html"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+    </div>
+    <div class="sidebar-logout">
+            <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon> Logout</a>
+    </div>
+  </div>
+
+  <!-- Orders Content -->
+  <div class="main">
+    <div class="main-navbar">
+      <ion-icon class="menus-toggle" name="menu-outline"></ion-icon>
+      <h2>Orders - DSSC Food Park</h2>
+    </div>
+
+    <div class="main-menus">
+      <h3 class="main-title">My Orders</h3>
+      <table class="orders-table">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+    <th>Payment Type</th>
+    <th>Shipping Option</th>
+  </tr>
+</thead>
+  <tbody></tbody>
+  <button class="btn" onclick="clearOrders()">Clear Orders</button>
+</table>
+    </div>
+  </div>
+  <style>
+  /* === ORDERS PAGE STYLES === */
+
+.main-navbar h2 {
+  color: var(--primaryColor);
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.main-menus {
+  background-color: var(--whiteColor);
+  padding: 2%;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.main-title {
+  font-size: 20px;
+  color: var(--primaryColor);
+  margin-bottom: 20px;
+  border-left: 4px solid var(--secondaryColor);
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+/* === ORDERS TABLE === */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--whiteColor);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 20px;
+}
+
+.orders-table thead {
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.orders-table th {
+  font-weight: 600;
+}
+
+.orders-table tbody tr {
+  background: var(--whiteColor);
+  border-bottom: 1px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.orders-table tbody tr:nth-child(even) {
+  background-color: var(--greyColor);
+}
+
+.orders-table tbody tr:hover {
+  background-color: var(--softGreenColor);
+  transform: scale(1.01);
+}
+
+/* Highlight specific columns */
+.orders-table td:nth-child(4),
+.orders-table td:nth-child(5) {
+  color: var(--primaryColor);
+  font-weight: 600;
+}
+
+.orders-table td:nth-child(6) {
+  color: var(--secondaryColor);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* === SHIPPING OPTION STYLE === */
+.orders-table td:nth-child(7) {
+  font-weight: 600;
+  font-size: 14px;
+  background-color: rgba(14, 98, 83, 0.05);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: inline-block;
+}
+
+/* === BUTTON === */
+.btn {
+  background: var(--primaryColor);
+  color: var(--whiteColor);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+.btn:hover {
+  background: var(--secondaryColor);
+  color: var(--blackColor);
+}
+
+/* === ANIMATION === */
+.orders-table tbody tr {
+  opacity: 0;
+  animation: fadeInRow 0.4s ease forwards;
+}
+.orders-table tbody tr:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+.orders-table tbody tr:nth-child(even) {
+  animation-delay: 0.2s;
+}
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === GOOGLE-STYLE DARK MODE === */
+body.dark-mode {
+  --bgColor: #202124;
+  --surfaceColor: #2d2f31;
+  --textColor: #ffffff;
+  --primaryColor: #ffffff;
+  --secondaryColor: #484848;
+}
+
+/* === Page & container backgrounds === */
+body.dark-mode .main {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+body.dark-mode .main-menus {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  box-shadow: none;
+}
+
+/* === Titles === */
+body.dark-mode .main-navbar h2,
+body.dark-mode .main-title {
+  color: var(--textColor);
+  border-left-color: var(--primaryColor);
+}
+
+/* === Table === */
+body.dark-mode .orders-table {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+  border: 1px solid var(--secondaryColor);
+}
+
+body.dark-mode .orders-table thead {
+  background-color: var(--secondaryColor);
+  color: var(--textColor);
+}
+
+body.dark-mode .orders-table tbody tr {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+body.dark-mode .orders-table tbody tr:nth-child(even) {
+  background-color: #333;
+}
+
+body.dark-mode .orders-table tbody tr:hover {
+  background-color: var(--secondaryColor);
+  transform: scale(1.01);
+}
+
+/* === Button in Dark Mode === */
+body.dark-mode .btn {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid var(--secondaryColor);
+}
+
+body.dark-mode .btn:hover {
+  background-color: var(--primaryColor);
+  color: #000;
+}
+
+/* === Sidebar === */
+body.dark-mode .sidebar {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+}
+body.dark-mode .sidebar a {
+  color: var(--textColor);
+}
+body.dark-mode .sidebar a.active {
+  background-color: var(--secondaryColor);
+}
+</style>
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const ordersTableBody = document.querySelector('.orders-table tbody');
+  const savedOrders = JSON.parse(localStorage.getItem('orders')) || [];
+
+  ordersTableBody.innerHTML = ''; // Clear table first
+
+  if (savedOrders.length === 0) {
+    const emptyRow = document.createElement('tr');
+    emptyRow.innerHTML = `
+      <td colspan="7" style="text-align:center; color:gray; padding:12px;">No orders yet.</td>
+    `;
+    ordersTableBody.appendChild(emptyRow);
+    return;
+  }
+
+  savedOrders.forEach((order, index) => {
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${index + 1}</td>
+    <td>${order.item}</td>
+    <td>${order.qty}</td>
+    <td>${order.price}</td>
+    <td>${order.total}</td>
+    <td>${order.paymentMethod}</td>
+    <td>${
+      order.shippingMethod === "🏬 Pickup at the Shop"
+        ? "🏬 Pickup at the Shop"
+        : "🛒 Delivery 10–20 minutes ₱10"
+    }</td>
+  `;
+  ordersTableBody.appendChild(row);
+});
+});
+</script>
+
+<script>
+function clearOrders() {
+  localStorage.removeItem('orders'); // delete saved orders
+  const tbody = document.querySelector('.orders-table tbody');
+  tbody.innerHTML = `
+    <tr>
+      <td colspan="7" style="text-align:center; color:gray; padding:12px;">No orders yet.</td>
+    </tr>
+  `;
+}
+</script>
+
+<script>
+// Robust theme loader for Orders page
+document.addEventListener('DOMContentLoaded', () => {
+  const applyThemeFromStorage = () => {
+    // 1) Prefer userSettings.darkMode (your settings.html uses this)
+    const raw = localStorage.getItem('userSettings');
+    if (raw) {
+      try {
+        const settings = JSON.parse(raw);
+        if (typeof settings.darkMode === 'boolean') {
+          document.body.classList.toggle('dark-mode', settings.darkMode);
+          return;
+        }
+      } catch (err) {
+        // invalid JSON — fall through to other checks
+      }
+    }
+
+    // 2) Fallback: check simple keys used elsewhere ('darkMode' or 'theme')
+    const simple = localStorage.getItem('darkMode') ?? localStorage.getItem('theme');
+    if (simple === 'true' || simple === 'dark') {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  };
+
+  // apply now
+  applyThemeFromStorage();
+
+  // update live if storage changes (user toggles settings in another tab/window)
+  window.addEventListener('storage', (e) => {
+    if (!e.key) return;
+    if (['userSettings', 'darkMode', 'theme'].includes(e.key)) {
+      applyThemeFromStorage();
+    }
+  });
+});
+</script>
+
+
+
+ <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

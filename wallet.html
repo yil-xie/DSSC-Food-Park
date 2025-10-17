@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wallet - DSSC Food Park</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+/* === SETTINGS PAGE STYLE (APPLIED TO WALLET TOO) === */
+.main {
+  padding: 2rem;
+  width: 100%;
+  background-color: var(--whiteColor);
+  min-height: 100vh;
+}
+
+/* === GOOGLE-STYLE DARK MODE (ALL WHITE TEXT VERSION) === */
+body.dark-mode {
+  --bgColor: #202124;
+  --surfaceColor: #2d2f31;
+  --textColor: #ffffff;
+  --primaryColor: #ffffff;
+  --secondaryColor: #484848;
+}
+
+body.dark-mode .main {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+body.dark-mode .sidebar {
+  background-color: var(--surfaceColor);
+  color: var(--textColor);
+}
+
+body.dark-mode .sidebar a {
+  color: var(--textColor);
+}
+
+body.dark-mode .sidebar a.active {
+  background-color: var(--secondaryColor);
+}
+
+/* === WALLET PAGE STYLING === */
+body {
+  background: linear-gradient(135deg, #ffffff, #e9f7ef, #fffbea);
+  color: #222;
+  font-family: 'Times New Roman', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.wallet-container {
+  margin-left: 100px;
+  margin-right: 320px;
+  padding: 50px;
+  padding-left: 250px;
+  padding-right: 786px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(160deg, #ffffff, #f4fdf6);
+}
+
+.wallet-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.wallet-header h2 {
+  font-size: 32px;
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.wallet-card {
+  background: #ffffff;
+  border: 2px solid #c8e6c9;
+  border-radius: 20px;
+  padding: 35px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wallet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
+}
+
+.wallet-card h3 {
+  color: #388e3c;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.wallet-balance {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fdd835;
+  margin: 10px 0 20px;
+  letter-spacing: 1px;
+}
+
+.wallet-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.wallet-btn {
+  background: linear-gradient(145deg, #4caf50, #2e7d32);
+  border: none;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.wallet-btn:hover {
+  background: linear-gradient(145deg, #2e7d32, #4caf50);
+  transform: scale(1.05);
+}
+
+/* Transaction History */
+.transaction-history {
+  margin-top: 60px;
+  width: 85%;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c8e6c9;
+}
+
+.transaction-history h3 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th, td {
+  padding: 12px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f1f8e9;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+tr:hover td {
+  background: #f9fff7;
+}
+
+/* Highlight for buttons */
+.wallet-btn:nth-child(1) {
+  background: linear-gradient(145deg, #fdd835, #fbc02d);
+  color: #333;
+}
+
+.wallet-btn:nth-child(1):hover {
+  background: linear-gradient(145deg, #fbc02d, #fdd835);
+}
+
+.wallet-btn:nth-child(2) {
+  background: linear-gradient(145deg, #4caf50, #388e3c);
+}
+
+.wallet-btn:nth-child(3) {
+  background: linear-gradient(145deg, #43a047, #2e7d32);
+}
+
+/* === DARK MODE FOR WALLET === */
+body.dark-mode .wallet-container {
+  background: var(--bgColor);
+}
+
+body.dark-mode .wallet-header h2,
+body.dark-mode .wallet-card h3,
+body.dark-mode .transaction-history h3 {
+  color: var(--textColor);
+}
+
+body.dark-mode .wallet-card,
+body.dark-mode .transaction-history {
+  background: var(--surfaceColor);
+  border: 1px solid var(--secondaryColor);
+  box-shadow: none;
+}
+
+body.dark-mode th, 
+body.dark-mode td {
+  color: var(--textColor);
+  border-bottom: 1px solid var(--secondaryColor);
+}
+
+body.dark-mode th {
+  background-color: var(--secondaryColor);
+}
+
+body.dark-mode .wallet-btn {
+  background: #444;
+  color: #fff;
+}
+
+body.dark-mode .wallet-btn:hover {
+  background: var(--secondaryColor);
+  color: var(--textColor);
+}
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1 class="logo">DSSC Food Park</h1>
+    <div class="sidebar-menus">
+      <a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a>
+      <a href="shops.html"><ion-icon name="storefront-outline"></ion-icon> Shops</a>
+      <a href="orders.html"><ion-icon name="receipt-outline"></ion-icon> Orders</a>
+      <a href="wallet.html" class="active"><ion-icon name="wallet-outline"></ion-icon> Wallet</a>
+      <a href="notification.html"><ion-icon name="notifications-outline"></ion-icon> Notifications</a>
+      <a href="contact-us.html"><ion-icon name="chatbubbles-outline"></ion-icon> Contact Us</a>
+      <a href="settings.html"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+    </div>
+    <div class="sidebar-logout">
+      <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon> Logout</a>
+    </div>
+  </div>
+
+  <!-- Wallet Section -->
+  <div class="wallet-container">
+    <div class="wallet-header">
+      <h2>My Digital Wallet</h2>
+    </div>
+
+    <div class="wallet-card">
+      <h3>Current Balance</h3>
+      <div class="wallet-balance" id="balance">₱0.00</div>
+      <div class="wallet-actions">
+        <button class="wallet-btn" onclick="addFunds()">Add Funds</button>
+        <button class="wallet-btn" onclick="withdrawFunds()">Withdraw</button>
+        <button class="wallet-btn" onclick="clearHistory()">Clear</button>
+      </div>
+    </div>
+
+    <div class="transaction-history">
+      <h3>Transaction History</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="transactions">
+          <tr><td colspan="4">No transactions yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- Wallet Logic -->
+  <script>
+    let balance = parseFloat(localStorage.getItem('walletBalance')) || 0;
+    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+    function updateWalletDisplay() {
+      document.getElementById('balance').innerText = '₱' + balance.toFixed(2);
+      const tbody = document.getElementById('transactions');
+      tbody.innerHTML = '';
+
+      if (transactions.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4">No transactions yet.</td></tr>';
+        return;
+      }
+
+      transactions.forEach((t, i) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${i + 1}</td>
+          <td>${t.type}</td>
+          <td>₱${t.amount.toFixed(2)}</td>
+          <td>${t.date}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function addFunds() {
+      const amount = parseFloat(prompt("Enter amount to add:"));
+      if (isNaN(amount) || amount <= 0) return alert("Invalid amount");
+      balance += amount;
+      transactions.push({ type: "Add Funds", amount, date: new Date().toLocaleString() });
+      saveData();
+    }
+
+    function withdrawFunds() {
+      const amount = parseFloat(prompt("Enter amount to withdraw:"));
+      if (isNaN(amount) || amount <= 0) return alert("Invalid amount");
+      if (amount > balance) return alert("Insufficient balance");
+      balance -= amount;
+      transactions.push({ type: "Withdraw", amount, date: new Date().toLocaleString() });
+      saveData();
+    }
+
+    function clearHistory() {
+      if (confirm("Are you sure you want to clear your transaction history?")) {
+        transactions = [];
+        saveData();
+      }
+    }
+
+    function saveData() {
+      localStorage.setItem('walletBalance', balance);
+      localStorage.setItem('transactions', JSON.stringify(transactions));
+      updateWalletDisplay();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateWalletDisplay();
+
+      // === Apply Dark Mode Based on Settings ===
+      const settings = JSON.parse(localStorage.getItem('userSettings'));
+      if (settings && settings.darkMode) {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  </script>
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

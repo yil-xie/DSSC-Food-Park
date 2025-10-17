@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shops - DSSC Food Park</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --primaryColor: #0e6253;
+      --secondaryColor: #ffc107;
+      --whiteColor: #fff;
+      --blackColor: #222;
+      --softGreenColor: #d9f2ee;
+      --darkGreyColor: #a7a7a7;
+      --greyColor: #f5f5f5;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', sans-serif;
+      background: var(--softGreenColor);
+      color: var(--blackColor);
+      display: flex;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 270px;
+      padding: 40px;
+      width: calc(100% - 270px);
+    }
+
+    .main-content h2 {
+      color: var(--primaryColor);
+      font-size: 28px;
+      margin-bottom: 25px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Shop Grid */
+    .shops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+      justify-items: center;
+    }
+
+    .shop-card {
+      background: var(--whiteColor);
+      border: 2px solid var(--primaryColor);
+      border-radius: 16px;
+      overflow: hidden;
+      width: 260px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .shop-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .shop-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .shop-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .shop-info h3 {
+      color: var(--primaryColor);
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .shop-info p {
+      color: var(--blackColor);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .shop-info button {
+      background: var(--secondaryColor);
+      color: var(--blackColor);
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .shop-info button:hover {
+      background: #ffd54f;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 220px;
+      }
+      .main-content {
+        margin-left: 230px;
+        padding: 20px;
+      }
+    }
+
+    /* === GOOGLE-STYLE DARK MODE for Shops === */
+body.dark-mode {
+  --bgColor: #202124;
+  --surfaceColor: #2d2f31;
+  --textColor: #ffffff;
+  --primaryColor: #ffffff;
+  --secondaryColor: #484848;
+}
+
+/* page background + transitions */
+body.dark-mode {
+  background-color: var(--bgColor) !important;
+  color: var(--textColor);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* main content */
+body.dark-mode .main-content {
+  background: var(--bgColor) !important;
+}
+
+/* page heading */
+body.dark-mode .main-content h2 {
+  color: var(--textColor) !important;
+}
+
+/* shop cards */
+body.dark-mode .shop-card {
+  background: var(--surfaceColor) !important;
+  border: 2px solid var(--secondaryColor) !important;
+  box-shadow: none !important;
+}
+
+body.dark-mode .shop-card img {
+  /* keep images natural — no inversion */
+  filter: none;
+}
+
+/* shop info text */
+body.dark-mode .shop-info,
+body.dark-mode .shop-info h3,
+body.dark-mode .shop-info p {
+  color: var(--textColor) !important;
+}
+
+body.dark-mode .shop-info h3 {
+  color: var(--textColor) !important;
+}
+
+/* buttons */
+body.dark-mode .shop-info button {
+  background: var(--secondaryColor) !important;
+  color: var(--textColor) !important;
+  border: 1px solid #5f6368 !important;
+}
+
+body.dark-mode .shop-info button:hover {
+  background: #5f6368 !important;
+  color: var(--textColor) !important;
+}
+
+/* sidebar */
+body.dark-mode .sidebar {
+  background-color: var(--surfaceColor) !important;
+  color: var(--textColor) !important;
+}
+
+body.dark-mode .sidebar a {
+  color: var(--textColor) !important;
+}
+
+body.dark-mode .sidebar a.active {
+  background-color: var(--secondaryColor) !important;
+  color: var(--textColor) !important;
+}
+
+/* subtle card elevation in dark mode */
+body.dark-mode .shop-card {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  background: var(--softGreenColor);
+  border-radius: 10px;
+  padding: 8px;
+  gap: 10px;
+}
+
+.menu-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.menu-item p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h1 class="logo">DSSC Food Park</h1>
+    <div class="sidebar-menus">
+      <a href="index.html"><ion-icon name="home-outline"></ion-icon> Home</a>
+      <a href="shops.html" class="active"><ion-icon name="storefront-outline"></ion-icon> Shops</a>
+      <a href="orders.html"><ion-icon name="receipt-outline"></ion-icon> Orders</a>
+      <a href="wallet.html"><ion-icon name="wallet-outline"></ion-icon> Wallet</a>
+      <a href="notification.html"><ion-icon name="notifications-outline"></ion-icon> Notifications</a>
+      <a href="contact-us.html"><ion-icon name="chatbubbles-outline"></ion-icon> Contact Us</a>
+      <a href="settings.html"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+    </div>
+    <div class="sidebar-logout">
+      <a href="logout.php"><ion-icon name="log-out-outline"></ion-icon> Logout</a>
+    </div>
+  </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <ion-icon class="menus-toggle" name="menu-outline"></ion-icon>
+    <h2>Available Shops</h2>
+
+    <div class="shops-grid">
+      <div class="shop-card">
+        <img src="images/shop1.jpg" alt="Burger Hub">
+        <div class="shop-info">
+          <h3>Miel Food Hub</h3>
+          <p>Crunchy, sizzling, flavor-packed goodness </p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/Shop2.jpg" alt="Coffee Spot">
+        <div class="shop-info">
+          <h3>Henry Food Hub</h3>
+          <p>Musubi magic, beefy goodness inside </p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/shop3.jpg" alt="Pizza Plaza">
+        <div class="shop-info">
+          <h3>Kuya Takoyaki</h3>
+          <p>Takoyaki love in every bite</p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/shop4.jpg" alt="Milktea Haven">
+        <div class="shop-info">
+          <h3>Nanay Yolly Lutong Bahay</h3>
+          <p>Made with love, tastes home </p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/shop5.jpg" alt="Milktea Haven">
+        <div class="shop-info">
+          <h3>Ate Champorado</h3>
+          <p>Warm, sweet, and truly Pinoy</p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/shop6.jpg" alt="Milktea Haven">
+        <div class="shop-info">
+          <h3>Jaydan Fried Chicken</h3>
+          <p>Golden crunch, tender chicken goodness</p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/shop7.jpg" alt="Milktea Haven">
+        <div class="shop-info">
+          <h3>Ate Pansit Canton</h3>
+          <p>Sweet treats meet savory comfort </p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/shop8.jpg" alt="Milktea Haven">
+        <div class="shop-info">
+          <h3>Kuya Juice and Ate Juice</h3>
+          <p>Snacks, drinks, and smiles served</p>
+          <button>View Menu</button>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <img src="images/shop9.jpg" alt="Milktea Haven">
+        <div class="shop-info">
+          <h3>Ate Mango Graham</h3>
+          <p>Refreshing juices, creamy mango treat</p>
+          <button>View Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal -->
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="shopName"></h2>
+      <div id="menuItems"></div>
+    </div>
+  </div>
+
+  <script>
+// Apply theme from settings (robust: supports userSettings object or simple keys)
+document.addEventListener('DOMContentLoaded', () => {
+  function applyThemeFromStorage() {
+    let dark = false;
+    const raw = localStorage.getItem('userSettings');
+    if (raw) {
+      try {
+        const settings = JSON.parse(raw);
+        if (typeof settings.darkMode === 'boolean') {
+          dark = settings.darkMode;
+        }
+      } catch (e) {
+        // ignore parse error
+      }
+    }
+
+    // fallback keys
+    if (!dark) {
+      const simple = localStorage.getItem('darkMode') ?? localStorage.getItem('theme');
+      if (simple === 'true' || simple === 'dark') dark = true;
+    }
+
+    document.body.classList.toggle('dark-mode', dark);
+  }
+
+  applyThemeFromStorage();
+
+  // If the user toggles theme in another tab, update this page live
+  window.addEventListener('storage', (e) => {
+    if (!e.key) return;
+    if (['userSettings', 'darkMode', 'theme'].includes(e.key)) {
+      applyThemeFromStorage();
+    }
+  });
+});
+</script>
+
+ <script>
+    const menus = {
+      "Miel Food Hub": [
+        { name: "Burger Deluxe", img: "https://via.placeholder.com/200x150.png?text=Burger+Deluxe" },
+        { name: "Fries Basket", img: "https://via.placeholder.com/200x150.png?text=Fries" },
+        { name: "Iced Tea", img: "https://via.placeholder.com/200x150.png?text=Iced+Tea" }
+      ],
+      "Henry Food Hub": [
+        { name: "Beef Musubi", img: "https://via.placeholder.com/200x150.png?text=Beef+Musubi" },
+        { name: "Chicken Teriyaki", img: "https://via.placeholder.com/200x150.png?text=Chicken+Teriyaki" },
+        { name: "Lemonade", img: "https://via.placeholder.com/200x150.png?text=Lemonade" }
+      ],
+      "Kuya Takoyaki": [
+        { name: "Octopus Takoyaki", img: "https://via.placeholder.com/200x150.png?text=Octopus+Takoyaki" },
+        { name: "Cheese Takoyaki", img: "https://via.placeholder.com/200x150.png?text=Cheese+Takoyaki" },
+        { name: "Matcha Drink", img: "https://via.placeholder.com/200x150.png?text=Matcha" }
+      ],
+      "Nanay Yolly Lutong Bahay": [
+        { name: "Adobo Meal", img: "https://via.placeholder.com/200x150.png?text=Adobo" },
+        { name: "Sinigang", img: "https://via.placeholder.com/200x150.png?text=Sinigang" },
+        { name: "Rice Meal", img: "https://via.placeholder.com/200x150.png?text=Rice" }
+      ]
+    };
+
+    function viewMenu(shop) {
+      document.querySelector('.main-content').style.display = 'none';
+      const menuSection = document.getElementById('menuSection');
+      const menuGrid = document.getElementById('menuGrid');
+      const shopName = document.getElementById('shopName');
+
+      shopName.textContent = shop;
+      menuGrid.innerHTML = '';
+
+      menus[shop].forEach(item => {
+        menuGrid.innerHTML += `
+          <div class="menu-item">
+            <img src="${item.img}" alt="${item.name}">
+            <h4>${item.name}</h4>
+          </div>`;
+      });
+
+      menuSection.style.display = 'block';
+    }
+
+    function goBack() {
+      document.querySelector('.main-content').style.display = 'block';
+      document.getElementById('menuSection').style.display = 'none';
+    }
+  </script>
+
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- Adding Mobile View -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
